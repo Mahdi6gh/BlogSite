@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib import auth
+from django.contrib.auth.models import User
 # Create your views here.
 def home(request):
     return render(request, 'homePageApp/index.html')
@@ -14,9 +15,9 @@ def LogIn(request):
         username = request.POST.get('username')
         password = request.POST.get('pass')
         print(f"Username: {username}, Password: {password}")  # Debugging
-        user=auth.authenticate(request, username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
+        userr=auth.authenticate(request, username=username, password=password)
+        if userr is not None:
+            auth.login(request, userr)
             return redirect('home')
         else:
             messages.info(request, "invalid credentials")
@@ -28,4 +29,27 @@ def LogOut(request):
         auth.logout(request)
     return redirect('home')
 def register(request):
+    contex={'erors':[]}
+    if request.user.is_authenticated:
+        return redirect("home")
+    if request.method=="POST":
+        username = request.POST.get('username')
+        password = request.POST.get('pass')
+        password2 = request.POST.get('pass2')
+        email=request.POST.get('email')
+        lastname=request.POST.get('Lastname')
+        firstname=request.POST.get('firstname')
+        if password != password2:
+            contex['erors'].append('Password match')
+        if User.objects.filter(username=username).exists():
+            contex['erors'].append('Username')
+        if User.objects.filter(email=email).exists():
+            contex['erors'].append('email')
+        if len(contex['erors'])==0:
+            userr=User.objects.create_user(username=username,password=password,email=email,first_name=firstname,last_name=lastname)
+            auth.login(request,userr)
+            return redirect('home')
+        else:
+            return render(request, 'homePageApp/LogIn/Register.html',contex)
+        
     return render(request, 'homePageApp/LogIn/Register.html')
