@@ -53,3 +53,9 @@ def register(request):
             return render(request, 'homePageApp/LogIn/Register.html',contex)
         
     return render(request, 'homePageApp/LogIn/Register.html')
+def blogs(request):
+    return render(request,"homePageApp/blog.html")
+def about(request):
+    return render(request,"homePageApp/about.html")
+def contact(request):   
+    return render(request,"homePageApp/contact.html")

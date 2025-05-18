@@ -1,0 +1,107 @@
+<style>
+    .dropdown {
+      position: relative;
+      display: inline-block;
+    }
+
+
+    .dropbtn {
+      color: black;
+      background-color: #f1f1f1;
+
+      font-size:20 px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background-color: #f1f1f1;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+      z-index: 1;
+    }
+
+    .dropdown-content a {
+      color: black;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: block;
+    }
+
+    .dropdown-content a:hover {
+      background-color: #ddd;
+    }
+
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .dropdown:hover .dropbtn {
+      {% comment %} background-color:rgb(228, 228, 228); {% endcomment %}
+  </style>
+   <!-- Header -->
+    <header class="">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container">
+            <a class="navbar-brand" href="index.html"
+              ><h2>Stand Blog<em>.</em></h2></a
+            >
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarResponsive"
+              aria-controls="navbarResponsive"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html"
+                    >Home
+                    <span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url 'about'%}">About Us</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url 'blogs'%}">Blogs</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url 'contact'%}">Contact Us</a>
+                </li>
+                <li class="nav-item">
+                  {% if request.user.is_authenticated%}
+                  <div class="dropdown nav-item">
+                    <button class="dropbtn nav-link">
+                      {{request.user.first_name}}
+                    </button>
+                    <div class="dropdown-content">
+                      <a href="{%url 'logout' %}">خروج از حساب</a>
+                      <a href="#">لینک دوم</a>
+                      <a href="#">لینک سوم</a>
+                    </div>
+                  </div>
+  
+                  {% else %}
+                  <a class="nav-link" href="{%url 'login' %}">login</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{%url 'register'%}">sign up</a>
+                </li>
+                  {% endif %}
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+  
