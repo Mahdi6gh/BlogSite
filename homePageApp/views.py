@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth.models import User
+from .models import blog
 # Create your views here.
 def home(request):
     return render(request, 'homePageApp/index.html')
@@ -55,6 +56,12 @@ def register(request):
     return render(request, 'homePageApp/LogIn/Register.html')
 def blogs(request):
     return render(request,"homePageApp/blog.html")
+def blog(request,id):
+    YourBlog=blog.objects.get(id=id)
+    context={'blog':YourBlog}
+    YourBlog.views+=1
+    YourBlog.save()
+    return render(request,"homePageApp/blog.html",context)
 def about(request):
     return render(request,"homePageApp/about.html")
 def contact(request):   

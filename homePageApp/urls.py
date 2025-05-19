@@ -9,6 +9,7 @@ urlpatterns = [
     path('logout/',views.LogOut,name='logout'), 
     path('register/',views.register,name='register'),
     path('blogs/',views.blogs,name="blogs"),
+    path('blog/<int:id>/', views.blog, name='blog_with_id'),
     path('about/',views.about,name="about"),
     path('contact/',views.contact,name="contact"),
 
