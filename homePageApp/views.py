@@ -3,10 +3,12 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth.models import User
-from .models import blog
+from .models import blog as blogg
 # Create your views here.
 def home(request):
-    return render(request, 'homePageApp/index.html')
+    blogs=blogg.objects.all()
+    context={'blogs':blogs}
+    return render(request, 'homePageApp/index.html',context)
 def detailpage(request):
     return render(request, 'homePageApp/post-details.html')
 def LogIn(request):
@@ -15,7 +17,6 @@ def LogIn(request):
     if request.method=="POST":
         username = request.POST.get('username')
         password = request.POST.get('pass')
-        print(f"Username: {username}, Password: {password}")  # Debugging
         userr=auth.authenticate(request, username=username, password=password)
         if userr is not None:
             auth.login(request, userr)
@@ -55,13 +56,15 @@ def register(request):
         
     return render(request, 'homePageApp/LogIn/Register.html')
 def blogs(request):
-    return render(request,"homePageApp/blog.html")
+    blogs=blogg.objects.all()
+    context={'blogs':blogs}
+    return render(request,"homePageApp/blog.html",context)
 def blog(request,id):
-    YourBlog=blog.objects.get(id=id)
+    YourBlog=blogg.objects.get(id=id)
     context={'blog':YourBlog}
     YourBlog.views+=1
     YourBlog.save()
-    return render(request,"homePageApp/blog.html",context)
+    return render(request,"homePageApp/post-details.html",context)
 def about(request):
     return render(request,"homePageApp/about.html")
 def contact(request):   

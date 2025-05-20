@@ -23,19 +23,12 @@
     />
 
     <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}" />
     <link
       rel="stylesheet"
-      href="{% static 'assets/css/templatemo-stand-blog.css' %}"
+      href="{% static 'css/templatemo-stand-blog.css' %}"
     />
-    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}" />
-    <!--
-
-TemplateMo 551 Stand Blog
-
-https://templatemo.com/tm-551-stand-blog
-
--->
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}" />
   </head>
 
   <body>
@@ -50,48 +43,7 @@ https://templatemo.com/tm-551-stand-blog
     <!-- ***** Preloader End ***** -->
 
     <!-- Header -->
-    <header class="">
-      <nav class="navbar navbar-expand-lg">
-        <div class="container">
-          <a class="navbar-brand" href="index.html"
-            ><h2>Stand Blog<em>.</em></h2></a
-          >
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarResponsive"
-            aria-controls="navbarResponsive"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="index.html"
-                  >Home
-                  <span class="sr-only">(current)</span>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="about.html">About Us</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="blog.html">Blog Entries</a>
-              </li>
-              <li class="nav-item active">
-                <a class="nav-link" href="post-details.html">Post Details</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="contact.html">Contact Us</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-    </header>
+    {% include "homePageApp/header.html" %}
 
     <!-- Page Content -->
     <!-- Banner Starts Here -->
@@ -146,59 +98,21 @@ https://templatemo.com/tm-551-stand-blog
             <div class="all-blog-posts">
               <div class="row">
                 <div class="col-lg-12">
+                  <!--post begin-->
                   <div class="blog-post">
                     <div class="blog-thumb">
-                      <img
-                        src="{% static 'assets/images/blog-post-02.jpg' %}"
-                        alt=""
-                      />
+                      <img src="{{blog.image.url}}" alt="{{blog.title}}" />
                     </div>
                     <div class="down-content">
-                      <span>Lifestyle</span>
-                      <a href="post-details.html"
-                        ><h4>Aenean pulvinar gravida sem nec</h4></a
-                      >
+                      <span>{{blog.category}}</span>
+                      <a href="post-details.html"><h4>{{blog.title}}</h4></a>
                       <ul class="post-info">
-                        <li><a href="#">Admin</a></li>
-                        <li><a href="#">May 12, 2020</a></li>
+                        <li><a href="#">{{blog.author}}n</a></li>
+                        <li><a href="#">{{blog.updated_at}}</a></li>
                         <li><a href="#">10 Comments</a></li>
                       </ul>
-                      <p>
-                        You can browse different tags such as
-                        <a
-                          rel="nofollow"
-                            <img src="{% static 'assets/images/comment-author-01.jpg' %}" alt="">
-                          target="_parent"
-                          >multi-page</a
-                        >,
-                        <a
-                          rel="nofollow"
-                          href="https://templatemo.com/tag/resume"
-                          target="_parent"
-                          >resume</a
-                            <img src="{% static 'assets/images/comment-author-02.jpg' %}" alt="">
-                        <a
-                          rel="nofollow"
-                          href="https://templatemo.com/tag/video"
-                          target="_parent"
-                          >video</a
-                        >, etc. to see more CSS templates. Sed hendrerit rutrum
-                        arcu, non malesuada nisi. Sed id facilisis turpis. Donec
-                        justo elit, dapibus vel ultricies in, molestie sit amet
-                            <img src="{% static 'assets/images/comment-author-03.jpg' %}" alt="">
-                        tempor nisl. Donec egestas, quam eu rutrum ultrices,
-                        sapien ante posuere nisl, ac eleifend eros orci vel
-                        ante. Pellentesque vitae eleifend velit. Etiam blandit
-                        felis sollicitudin vestibulum feugiat. <br /><br />Donec
-                        tincidunt leo nec magna gravida varius. Suspendisse
-                        felis orci, egestas ac sodales quis, venenatis et neque.
-                        Vivamus facilisis dignissim arcu et blandit. Maecenas
-                        finibus dui non pulvinar lacinia. Ut lacinia finibus
-                            <img src="{% static 'assets/images/comment-author-02.jpg' %}" alt="">
-                        ultrices varius eget in risus. Cras id nibh at erat
-                        pulvinar malesuada et non ipsum. Suspendisse id ipsum
-                        leo.
-                      </p>
+
+                      <p>{{blog.content}}</p>
                       <div class="post-options">
                         <div class="row">
                           <div class="col-6">
@@ -221,6 +135,7 @@ https://templatemo.com/tm-551-stand-blog
                   </div>
                 </div>
                 <div class="col-lg-12">
+                  <!--comments-->
                   <div class="sidebar-item comments">
                     <div class="sidebar-heading">
                       <h2>4 comments</h2>
@@ -230,7 +145,7 @@ https://templatemo.com/tm-551-stand-blog
                         <li>
                           <div class="author-thumb">
                             <img
-                              src="assets/images/comment-author-01.jpg"
+                              src="{% static 'images/comment-author-01.jpg' %}"
                               alt=""
                             />
                           </div>
@@ -248,7 +163,7 @@ https://templatemo.com/tm-551-stand-blog
                         <li class="replied">
                           <div class="author-thumb">
                             <img
-                              src="assets/images/comment-author-02.jpg"
+                              src="{% static 'images/comment-author-02.jpg' %}"
                               alt=""
                             />
                           </div>
@@ -263,7 +178,7 @@ https://templatemo.com/tm-551-stand-blog
                         <li>
                           <div class="author-thumb">
                             <img
-                              src="assets/images/comment-author-03.jpg"
+                              src="{% static 'images/comment-author-03.jpg' %}"
                               alt=""
                             />
                           </div>
@@ -280,7 +195,7 @@ https://templatemo.com/tm-551-stand-blog
                         <li class="replied">
                           <div class="author-thumb">
                             <img
-                              src="assets/images/comment-author-02.jpg"
+                              src="{% static 'images/comment-author-02.jpg' %}"
                               alt=""
                             />
                           </div>
@@ -347,16 +262,8 @@ https://templatemo.com/tm-551-stand-blog
                                 required=""
                               ></textarea>
                             </fieldset>
-    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
                             <fieldset>
-                              <button
-                                type="submit"
-    <script src="{% static 'assets/js/custom.js' %}"></script>"
-    <script src="{% static 'assets/js/owl.js' %}"></script>button"
-    <script src="{% static 'assets/js/slick.js' %}"></script>
-    <script src="{% static 'assets/js/isotope.js' %}"></script>
-    <script src="{% static 'assets/js/accordions.js' %}"></script>
+                              <button type="submit">Submit</button>
                             </fieldset>
                           </div>
                         </div>
@@ -490,15 +397,15 @@ https://templatemo.com/tm-551-stand-blog
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
     <!-- Additional Scripts -->
-    <script src="assets/js/custom.js"></script>
-    <script src="assets/js/owl.js"></script>
-    <script src="assets/js/slick.js"></script>
-    <script src="assets/js/isotope.js"></script>
-    <script src="assets/js/accordions.js"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
+    <script src="{% static 'js/owl.js' %}"></script>
+    <script src="{% static 'js/slick.js' %}"></script>
+    <script src="{% static 'js/isotope.js' %}"></script>
+    <script src="{% static 'js/accordions.js' %}"></script>
 
     <script language="text/Javascript">
       cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
