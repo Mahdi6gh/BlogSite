@@ -7,7 +7,7 @@ class category(models.Model):
         return self.name
 class blog(models.Model):
     title = models.CharField(max_length=100)
-    category = models.ForeignKey(category,on_delete=models.SET_NULL,null=True,blank=True)
+    category = models.ManyToManyField(category)
     content = models.TextField()
     description = models.TextField(editable=True,blank=True ,help_text="its gonna be auto full")
     author = models.ForeignKey(User,on_delete=models.SET_NULL, null=True)

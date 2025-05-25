@@ -60,7 +60,7 @@ https://templatemo.com/tm-551-stand-blog
             <div class="item-content">
               <div class="main-content">
                 <div class="meta-category">
-                  <span>{{blog.category}}</span>
+                  <span>{{blog.category.first}}</span>
                 </div>
                 <a href="{%url 'blog_with_id' blog.id%}"
                   ><h4>{{blog.title}}</h4></a
@@ -123,7 +123,7 @@ https://templatemo.com/tm-551-stand-blog
                       />
                     </div>
                     <div class="down-content">
-                      <span>{{blog.category}}</span>
+                      <span>{{blog.category.first}}</span>
                       <a href="{% url 'blog_with_id' blog.id %}"
                         ><h4>{{blog.title}}</h4></a
                       >
