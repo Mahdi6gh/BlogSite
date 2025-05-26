@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="TemplateMo" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i&display=swap"
+      rel="stylesheet"
+    />
+    <title>Stand CSS Blog by TemplateMo</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static "vendor/bootstrap/css/bootstrap.min.css"%}"
+    rel="stylesheet" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}" />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/templatemo-stand-blog.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}" />
+  </head>
+  <body>
+    {% include "homePageApp/header.html" %}
+    <div
+      class="profile-container"
+      style="
+        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      "
+    >
+      <h1>User Profile</h1>
+      <div class="profile-card" style="text-align: center">
+        <!-- Profile Picture -->
+        <div
+          class="profile-picture"
+          style="height: 150px; width: 150px; margin-top: 60px"
+        >
+          {% if user.profile.picture %}
+          <img
+            src="{{ user.profile.picture.url }}"
+            alt="Profile Picture"
+            style="border-radius: 50%"
+          />
+          {% else %}
+          <img
+            src="{% static 'images/default-profile.jpg' %}"
+            alt="Default Profile Picture"
+            style="border-radius: 50%"
+          />
+          {% endif %}
+        </div>
+
+        <!-- User Information -->
+        <div class="profile-info">
+          <p><strong>Username:</strong> {{ user.username }}</p>
+          <p>
+            <strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}
+          </p>
+          <p><strong>National Code:</strong> {{ profile.nationall_code }}</p>
+          <p><strong>Father's Name:</strong> {{ profile.Father_name }}</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

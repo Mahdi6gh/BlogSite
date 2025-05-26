@@ -69,3 +69,12 @@ def about(request):
     return render(request,"homePageApp/about.html")
 def contact(request):   
     return render(request,"homePageApp/contact.html")
+def profile(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+    try:
+        profile = request.user.profile
+    except:
+        user=request.user
+    user=request.user
+    return render(request, "homePageApp/profile.html", {'user': user,'profile': profile })
