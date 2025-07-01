@@ -27,6 +27,8 @@ class blog(models.Model):
     slug=models.SlugField(null=True,unique=True,blank=True)
     class Meta:
         ordering=['-created_at']
+        verbose_name="post"
+        verbose_name_plural= verbose_name+"s"
 
     def save(self,*args,**kwargs):
         self.slug= slugify(self.title)
