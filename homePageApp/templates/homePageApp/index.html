@@ -62,7 +62,7 @@ https://templatemo.com/tm-551-stand-blog
                 <div class="meta-category">
                   <span>{{blog.category.first}}</span>
                 </div>
-                <a href="{%url 'blog_with_id' blog.id%}"
+                <a href="{{blog.url}}"
                   ><h4>{{blog.title}}</h4></a
                 >
                 <ul class="post-info">
@@ -124,7 +124,7 @@ https://templatemo.com/tm-551-stand-blog
                     </div>
                     <div class="down-content">
                       <span>{{blog.category.first}}</span>
-                      <a href="{% url 'blog_with_id' blog.id %}"
+                      <a href="{{blog.url}}"
                         ><h4>{{blog.title}}</h4></a
                       >
                       <ul class="post-info">
@@ -177,9 +177,9 @@ https://templatemo.com/tm-551-stand-blog
 
 
                       <ul>
-                        {% for blog in blogs %}
+                        {% for blog in recent_blog %}
                         <li>
-                          <a href="{%url 'blog_with_id' blog.id%}">
+                          <a href="{{blog.url}}">
                             <h5>
                               {{blog.title}}
                             </h5>

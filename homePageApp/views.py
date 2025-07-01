@@ -7,8 +7,9 @@ from .models import blog as blogg
 # Create your views here.
 def home(request):
     blogs=blogg.objects.all()
+    recent_blog=blogs[:2]
     blogsCount=blogs.count()
-    context={'blogs':blogs, 'blogsCount': blogsCount}
+    context={'blogs':blogs, 'blogsCount': blogsCount,'recent_blog':recent_blog}
     return render(request, 'homePageApp/index.html',context)
 def detailpage(request):
     return render(request, 'homePageApp/post-details.html')
@@ -60,8 +61,8 @@ def blogs(request):
     blogs=blogg.objects.all()
     context={'blogs':blogs}
     return render(request,"homePageApp/blog.html",context)
-def blog(request,id):
-    YourBlog=blogg.objects.get(id=id)
+def blog(request,slug):
+    YourBlog=blogg.objects.get(slug=slug)
     context={'blog':YourBlog}
     YourBlog.views+=1
     YourBlog.save()
