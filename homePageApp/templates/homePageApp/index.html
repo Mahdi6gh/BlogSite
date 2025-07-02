@@ -173,20 +173,7 @@ https://templatemo.com/tm-551-stand-blog
                       <h2>Recent Posts</h2>
                     </div>
                     <div class="content">
-                      {% comment %} recent posts {% endcomment %}
-
-
-                      <ul>
-                        {% for blog in recent_blog %}
-                        <li>
-                          <a href="{{blog.url}}">
-                            <h5>
-                              {{blog.title}}
-                            </h5>
-                            <span>{{blog.updated_at}}</span>
-                          </a>
-                        </li>
-                        {% endfor %}
+                      {% include "homePageApp/recentPost.html"%}
                       </ul>
                     </div>
                   </div>

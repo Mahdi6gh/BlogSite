@@ -1,0 +1,12 @@
+{% load static%} {% comment %} recent posts {% endcomment %}
+
+<ul>
+  {% for blog in recent_blog %}
+  <li>
+    <a href="{{blog.url}}">
+      <h5>{{blog.title}}</h5>
+      <span>{{blog.updated_at}}</span>
+    </a>
+  </li>
+  {% endfor %}
+</ul>

@@ -9,7 +9,7 @@ def home(request):
     blogs=blogg.objects.all()
     recent_blog=blogs[:2]
     blogsCount=blogs.count()
-    context={'blogs':blogs, 'blogsCount': blogsCount,'recent_blog':recent_blog}
+    context={'blogs':blogs, 'blogsCount': blogsCount,'recent_blog1':recent_blog}
     return render(request, 'homePageApp/index.html',context)
 def detailpage(request):
     return render(request, 'homePageApp/post-details.html')
