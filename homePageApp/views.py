@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.contrib import auth
 from django.contrib.auth.models import User
 from .models import blog as blogg
+from .models import category
 # Create your views here.
 def home(request):
     blogs=blogg.objects.all()
@@ -59,7 +60,7 @@ def register(request):
     return render(request, 'homePageApp/LogIn/Register.html')
 def blogs(request):
     blogs=blogg.objects.all()
-    context={'blogs':blogs}
+    context={'blogs':blogs,'title':'blogs'}
     return render(request,"homePageApp/blog.html",context)
 def blog(request,slug):
     YourBlog=blogg.objects.get(slug=slug)
@@ -80,3 +81,8 @@ def profile(request):
         user=request.user
     user=request.user
     return render(request, "homePageApp/profile.html", {'user': user,'profile': profile })
+def categoryBlogs(request,cat):
+    categor=category.objects.get(id=cat)
+    blogs=categor.blog_set.all()
+    
+    return render(request,"homePageApp/blog.html",{'blogs':blogs,'title':f"all posts about {categor}"})

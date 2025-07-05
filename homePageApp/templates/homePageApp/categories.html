@@ -1,0 +1,8 @@
+{%load static%}
+<div class="content">
+  <ul>
+    {% for cat in category%}
+    <li><a href="{%url 'categoryBlog' cat.id %}">{{cat.name}}</a></li>
+    {% endfor %}
+  </ul>
+</div>
