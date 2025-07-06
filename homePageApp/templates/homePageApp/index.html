@@ -1,4 +1,5 @@
 {% load static%}
+{% load social_share%}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -70,6 +71,8 @@ https://templatemo.com/tm-551-stand-blog
                   <li><a href="#">{{blog.updated_at}}</a></li>
                   <li><a href="#">12 Comments</a></li>
                 </ul>
+                                      
+
               </div>
             </div>
           </div>
@@ -141,6 +144,7 @@ https://templatemo.com/tm-551-stand-blog
                               <li><a href="#">Best Templates</a>,</li>
                               <li><a href="#">TemplateMo</a></li>
                             </ul>
+                            {%include "homePageApp/socials.html" %}
                           </div>
                         </div>
                       </div>
